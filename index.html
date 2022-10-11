@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>하나나 방송켜짐 알리미</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link href="./asset/style.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript" src="./asset/app.js"></script>
+</head>
+
+<body>
+  <h1>하나나 아프리카 TV 방송켜짐 알리미</h1>
+  <div class="clock_box" id="clock_box" style="display:none">
+    <div class="wrap">
+      <h2>현재시간</h2>
+      <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+    </div>
+  </div>
+
+  <div class="start_button" id="start_button">
+    <button onclick="start()">시작하기</button>
+  </div>
+
+  <div class="help_box">
+    <strong>도움말) 어떻게 사용하나요?</strong><br>
+    - 위 '시작하기' 버튼을 누른 뒤 이 탭을 닫지 않은 상태로 놔두시면됩니다.<br>
+    - 5초 간격으로 방송 상태를 감지하여 켜짐이 감지되면 자동으로 알림음과 함께 알림창이 표시됩니다.<br>
+    - 소리는 아래 소리가 재생됩니다. 시끄러울 수 있으니 미리 볼륨을 조절해주세요<br>
+  </div>
+
+  <div class="log_box" id="log_box" style="display: none">
+    <ul>
+      <li class="working">
+        <p>
+          실시간 방송감지가 작동중입니다
+          <img src="./asset/loading.gif" width="17px" height="auto">
+        </p>
+      </li>
+      <li class="log">
+        <p id="log"></p>
+      </li>
+    </ul>
+  </div>
+
+  <audio controls loop id="audio">
+    <source src="./asset/sound.wav" type="audio/wav">
+    이 문장은 여러분의 브라우저가 audio 태그를 지원하지 않을 때 화면에 표시됩니다!
+  </audio>
+
+  <div id="alert" class="alert" style="display: none">
+    <div class="modal">
+      <strong>방송이 켜졌어요! 빨리 달려갑시다!!</strong>
+      <p>아래 버튼을 누르시면 바로가실 수 있어요</p>
+      <button style="border: 1px solid #000;" onclick="alertStop()">하나나 방송국 바로가기 & 알림끄기</button>
+    </div>
+    <div class="alert_bg"></div>
+  </div>
+  <script>
+    function start() {
+      document.getElementById("start_button").style.display = "none";
+      document.getElementById("clock_box").style.display = "block";
+      document.getElementById("log_box").style.display = "block";
+      app.run();
+    }
+    function alertStop(){
+      pAlert.stop();
+    }
+    showTime();
+  </script>
+</body>
+
+</html>
