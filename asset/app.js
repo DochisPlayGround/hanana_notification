@@ -102,12 +102,12 @@ function updateLog() {
  */
 function getTime() {
   var date = new Date();
+  let session = "AM";
   const d = {
     h: date.getHours(),
     m: date.getMinutes(),
     s: date.getSeconds(),
   };
-  const session = "AM";
 
   if (d.h == 0) {
     d.h = 12;
